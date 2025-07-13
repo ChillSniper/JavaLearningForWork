@@ -278,3 +278,71 @@ select * from emp where idcard like '%1';
 ```
 
 $\%$说明前面多少位都无所谓，最后一个得是1
+
+#### $DQL$-聚合函数
+
+将一列数据作为一个整体，进行纵向计算。
+
+常见聚合函数：$max$, $min$, $avg$, $sum$, $count$.
+
+```sql
+select 函数名 from 表名;
+```
+
+$null$值**不参与**聚合函数计算
+
+#### $DQL$-分组查询
+
+```sql
+select 字段列表 From 表名 [Where 条件] Group By 分组字段名 [Having 分组后过滤条件];
+```
+
+##### $where$和$Having$区别
+
+1. 执行时机不同：Where是分组前进行过了，不满足Where条件，不参与分组；而Having是分组之后对结果进行过滤；
+2. 判断条件不同：Where不能对聚合函数进行判断，而Having可以。
+
+注意：
+
+a. 执行顺序：where > 聚合函数 > having
+b. 分组之后，查询的字段一般为聚合函数和分组字段，查询其他字段没有意义。
+
+#### $DQL$-排序查询
+
+$ORDER$ $BY$
+
+```sql
+select 字段列表 from 表名 order by 字段1 排序方式1，字段2, 排序方式2;
+```
+
+排序方式：
+ASC：升序
+DESC：降序
+
+#### $DQL$-分页查询
+
+$LIMIT$
+
+这个就是弄出来那种一页一页的滚动页面
+
+```sql
+select 字段列表 from 表名 limit 起始索引, 查询记录数;
+```
+
+注意点：
+
+1. 起始索引从0开始，$$起始索引 = (查询页码 - 1) \times 每页显示记录数$$
+2. 分页查询是数据库的**方言**，不同数据库实现方式不同，在$MySQL$中是$LIMIT$
+3. 如果查询的是第一页数据，起始索引可以忽略，直接简写为$LIMIT$ $10$
+
+#### $DQL$-执行顺序
+
+注意区分**编写**顺序和**执行**顺序！
+执行次序：from->where->group by->having->select->order by->limit
+
+![alt text](image-1.png)
+
+### $DCL$
+
+即**数据控制语言**：$Data$ $Control$ $Language$
+管理数据库用户、控制数据库的访问权限。
