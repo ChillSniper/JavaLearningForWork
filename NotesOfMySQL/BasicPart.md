@@ -348,3 +348,54 @@ select 字段列表 from 表名 limit 起始索引, 查询记录数;
 
 即**数据控制语言**：$Data$ $Control$ $Language$
 管理数据库用户、控制数据库的访问权限。
+
+#### $DCL$-管理用户
+
+查询用户：
+
+```sql
+USE mysql; # 这个mysql是系统数据库
+Select * From user;
+```
+
+创建用户：
+
+```sql
+create user  '用户名'@'主机名' IDENTIFIED BY '密码';
+```
+
+修改用户密码：
+
+```sql
+alter user '用户名'@'主机名' IDENTIFIED WITH mysql_native_password BY '新密码';
+```
+
+删除用户：
+
+```sql
+DROP USER '用户名'@'主机名';
+```
+
+**主机名可以用$\%$通配**
+
+#### $DCL$-权限控制
+
+查询权限：
+
+```sql
+show grants for '用户名'@'主机名';
+```
+
+授予权限：
+
+```sql
+GRANT 权限列表 ON 数据库名.表名 TO '用户名'@'主机名';
+```
+
+撤销权限：
+
+```sql
+REVOKE 权限列表 ON 数据库名.表名 FROM '用户名'@'主机名';
+```
+
+## Function/函数
