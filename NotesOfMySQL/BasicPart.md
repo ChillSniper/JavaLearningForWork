@@ -265,6 +265,8 @@ Select Distinct 字段列表 From 表名;
 Select 字段列表 From 表名 Where 条件列表;
 ```
 
+特别注意：**$MySQL$语句中使用三值查询：TRUE, FALSE, UNKNOWN**
+
 注意那个模糊匹配的语法格式，比如下面这个例子：
 
 ```sql
