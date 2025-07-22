@@ -399,3 +399,126 @@ REVOKE 权限列表 ON 数据库名.表名 FROM '用户名'@'主机名';
 ```
 
 ## Function/函数
+
+### 字符串函数
+
+内置的
+
+```sql
+Concat(s1, s2, s3, ……, sn) # 字符串拼接
+Lower(str) # 全部转为小写
+Upper(str) # 全部转为大写
+LPAD(str, n, pad) # 左填充
+RPAD(str, n, pad) # 右填充
+TRIM(str) # 去掉字符串头部和尾部的空格
+SubString(str, start, len) # 返回从字符串str从start位置起的len个长度的字符串
+```
+
+### 数值函数
+
+```sql
+ceil(x) # 向上取整
+floor(x) # 向下取整
+mod(x, y) # return x % y
+rand() # return rand(0, 1)
+round(x, y) # return x.len(y)
+```
+
+### 日期函数
+
+```sql
+curdate() # return cur date
+curtime() # return cur time
+now() # return cur date, time
+year(date) # ...
+month(date) # ...
+select date_add(now(), INTERVAL 70 YEAR);
+```
+
+### 流程函数
+
+实现条件筛选，提高语句效率
+
+```sql
+IF(value, t, f); 
+ifnull(value1, value2)
+case when [value1] then [res1] else [default] end
+case [expr] when [val1] then [res1] else [default] end
+```
+
+## 约束
+
+### 概述
+
+非空约束：$NOT$ $NULL$
+唯一约束：$UNIQUE$
+主键约束：$PRIMARY$ $KEY$
+默认约束：$DEFAULT$
+检查约束：$CHECK$
+外键约束：$FOREIGN$ $KEY$
+
+### 外键约束
+
+在数据库层面，没有外键的关联，是无法保证数据的一致性和完整性的。
+
+#### 语法
+
+语法：
+
+添加外键
+
+```sql
+Create Table 表名(
+    字段名 数据类型
+    [Constraint][外键名称] Foreign KEY(外键字段名) References 主表(主表列名)
+);
+
+Alter Table 表名 Add Constraint 外键名称 Foreign Key(外键字段名) References 主表(主表列名);
+```
+
+删除/更新行为
+
+Cascade：当在父表中删除/更新对应记录时，首先检查该记录是否有对应外键，如果有，则也删除/更新外键在子表中的记录。
+
+```sql
+Alter Table 表名 Add Constraint 外键名称 Foreign Key (外键字段) References 主表名(主表字段名) On Update Cascade on delete Cascade;
+```
+
+这部分内容有点混乱
+![alt text](image-2.png)
+
+## 多表查询
+
+### 多表关系
+
+表结构之间的联系：一对多（多对一）、多对多、一对一
+
+### 多表查询概述
+
+笛卡尔积：集合A, B的所有组合情况
+
+在多表查询时，需要消除无效的笛卡尔积
+
+### 内连接
+
+内连接查询的是**两张表交集**的部分
+
+隐式内连接：
+
+```sql
+Select 字段列表 From 表1，表2 Where 条件……;
+```
+
+显示内连接：
+
+```sql
+Select 字段列表 From 表1 [Inner] Join 表2 On 连接条件……;
+```
+
+### 外连接
+
+左外连接
+
+```sql
+Select 字段列表 From 表1 LEFT [Outer] Join 表2 On 条件……;
+```
