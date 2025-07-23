@@ -522,3 +522,75 @@ Select 字段列表 From 表1 [Inner] Join 表2 On 连接条件……;
 ```sql
 Select 字段列表 From 表1 LEFT [Outer] Join 表2 On 条件……;
 ```
+
+### 自连接
+
+语法结构
+
+```sql
+Select 字段列表 From 表A 别名A Join 表A 别名B On 条件……;
+```
+
+自连接查询，可以是内连接查询，也可以是外连接查询。
+
+### 联合查询
+
+$union$, $union$ $all$
+
+```sql
+Select 字段列表 From 表A……
+Union [All]
+Select 字段列表 From 表B……
+```
+
+对于 Union All，把全部数据合并到一块，而Union会对合并之后的数据进行去重。
+**还有，注意字段列表要一致。**
+
+### 子查询
+
+SQL语句中嵌套SELECT语句，称为**嵌套查询**，又称**子查询**。
+
+```sql
+Select * From t1 where column1 = (select column1 from t2);
+```
+
+子查询外部语句可以是Insert/Update/Delete/Select中的任何一个。
+
+#### 标量子查询
+
+例如
+
+```sql
+select * from emp where entrydate > (select emp.entrydate from emp where name = '金庸');
+```
+
+#### 列子查询
+
+子查询返回结果为一列
+
+```sql
+IN
+NOT IN
+ANY # 子查询返回列表中，有一个满足即可
+SOME # 等价于 ANY
+ALL
+```
+
+#### 行子查询
+
+由于行子查询返回的结果是一行多列
+
+例如：
+
+```sql
+select * from emp where (salary, managerid) = (select salary, managerid from emp where name = '张无忌');
+```
+
+#### 表子查询
+
+子查询返回结果是多行多列，这种子查询称为**表子查询**
+操作符：$IN$
+
+### 多表查询小结
+
+![alt text](image-3.png)
