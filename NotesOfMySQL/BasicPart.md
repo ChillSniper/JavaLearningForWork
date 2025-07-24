@@ -1,430 +1,430 @@
 # Basic Part
 
-## MySQL ¸ÅÊö
+## MySQL æ¦‚è¿°
 
-### Êý¾Ý¿âÏà¹Ø¸ÅÄî
+### æ•°æ®åº“ç›¸å…³æ¦‚å¿µ
 
-Êý¾Ý¿â£º$DataBase$
-Êý¾Ý¿â¹ÜÀíÏµÍ³£º$DBMS$
+æ•°æ®åº“ï¼š$DataBase$
+æ•°æ®åº“ç®¡ç†ç³»ç»Ÿï¼š$DBMS$
 
-¹ØÓÚ$SQL$
-²Ù×÷¹ØÏµÐÍÊý¾Ý¿âµÄ±à³ÌÓïÑÔ
+å…³äºŽ$SQL$
+æ“ä½œå…³ç³»åž‹æ•°æ®åº“çš„ç¼–ç¨‹è¯­è¨€
 $Structured$ $Query$ $Language$
 
 Learn about $MySQL$
 
-±í
+è¡¨
 
-#### Êý¾ÝÄ£ÐÍ
+#### æ•°æ®æ¨¡åž‹
 
-¹ØÏµÐÍÊý¾Ý¿â£ºÔÚ¹ØÏµÄ£ÐÍ»ù´¡ÉÏ£¬Ê¹ÓÃ¶àÕÅÏà»¥Á¬½ÓµÄ¶þÎ¬±íÁ¬½Ó¶ø³É¡£
+å…³ç³»åž‹æ•°æ®åº“ï¼šåœ¨å…³ç³»æ¨¡åž‹åŸºç¡€ä¸Šï¼Œä½¿ç”¨å¤šå¼ ç›¸äº’è¿žæŽ¥çš„äºŒç»´è¡¨è¿žæŽ¥è€Œæˆã€‚
 
 ## SQL
 
-¹ØÓÚSQLÍ¨ÓÃÓï·¨¡¢SQL·ÖÀà¡¢DDL¡¢DML¡¢DQL¡¢DCLµÈ
+å…³äºŽSQLé€šç”¨è¯­æ³•ã€SQLåˆ†ç±»ã€DDLã€DMLã€DQLã€DCLç­‰
 
-### SQLÍ¨ÓÃÓï·¨
+### SQLé€šç”¨è¯­æ³•
 
-·ÖºÅ½áÎ²£¬¾ßÌåºóÃæ¸ã
-×¢Òâ£º**SQL Óï¾ä²»Çø·Ö´óÐ¡Ð´**
+åˆ†å·ç»“å°¾ï¼Œå…·ä½“åŽé¢æž
+æ³¨æ„ï¼š**SQL è¯­å¥ä¸åŒºåˆ†å¤§å°å†™**
 
-### SQL·ÖÀà
+### SQLåˆ†ç±»
 
 ![alt text](image.png)
 
-$Definition$£¬$Manipulation$£¬$Query$£¬$Control$
+$Definition$ï¼Œ$Manipulation$ï¼Œ$Query$ï¼Œ$Control$
 
 ### $DDL$
 
 $Data$ $Definition$ $Language$
 
-²éÑ¯£º
-²éÑ¯ËùÓÐÊý¾Ý¿â£º
+æŸ¥è¯¢ï¼š
+æŸ¥è¯¢æ‰€æœ‰æ•°æ®åº“ï¼š
 
 ```SQL
 SHOW DATABSES
 ```
 
-²éÑ¯µ±Ç°Êý¾Ý¿â£º
+æŸ¥è¯¢å½“å‰æ•°æ®åº“ï¼š
 
 ```SQL
 SELECT DATABASE();
 ```
 
-´´½¨£º
+åˆ›å»ºï¼š
 
 ```SQL
-CREATE DATABASE [IF NOT EXISTS] Êý¾Ý¿âÃû [DEFAULT CHARSET ×Ö·û¼¯] [COLLATE ÅÅÐò¹æÔò];
+CREATE DATABASE [IF NOT EXISTS] æ•°æ®åº“å [DEFAULT CHARSET å­—ç¬¦é›†] [COLLATE æŽ’åºè§„åˆ™];
 ```
 
-É¾³ý£º
+åˆ é™¤ï¼š
 
 ```SQL
-DROP DATABASE [IF EXISTS]Êý¾Ý¿âÃû;
+DROP DATABASE [IF EXISTS]æ•°æ®åº“å;
 ```
 
-Ê¹ÓÃ£º
+ä½¿ç”¨ï¼š
 
 ```SQL
-USE Êý¾Ý¿âÃû;
+USE æ•°æ®åº“å;
 ```
 
-#### DDL-±í²Ù×÷-²éÑ¯
+#### DDL-è¡¨æ“ä½œ-æŸ¥è¯¢
 
-²éÑ¯µ±Ç°Êý¾Ý¿âËùÓÐ±í£º
+æŸ¥è¯¢å½“å‰æ•°æ®åº“æ‰€æœ‰è¡¨ï¼š
 
 ```SQL
 SHOW TABLES;
 ```
 
-²éÑ¯±í½á¹¹£º
+æŸ¥è¯¢è¡¨ç»“æž„ï¼š
 
 ```SQL
-DESC ±íÃû×Ö;
+DESC è¡¨åå­—;
 ```
 
-²éÑ¯Ö¸¶¨±íµÄ½¨±íÓï¾ä£º
+æŸ¥è¯¢æŒ‡å®šè¡¨çš„å»ºè¡¨è¯­å¥ï¼š
 
 ```SQL
-SHOW CREATE TABLE ±íÃû;
+SHOW CREATE TABLE è¡¨å;
 ```
 
-#### DDL-±í²Ù×÷-´´½¨
+#### DDL-è¡¨æ“ä½œ-åˆ›å»º
 
 ```SQL
-CREATE TABLE ±íÃû(
-    ×Ö¶Î1 ×Ö¶Î1ÀàÐÍ[COMMENT ×Ö¶Î1×¢ÊÍ]
-)[COMMENT ±í×¢ÊÍ];
+CREATE TABLE è¡¨å(
+    å­—æ®µ1 å­—æ®µ1ç±»åž‹[COMMENT å­—æ®µ1æ³¨é‡Š]
+)[COMMENT è¡¨æ³¨é‡Š];
 ```
 
-#### DDL-Êý¾ÝÀàÐÍ
+#### DDL-æ•°æ®ç±»åž‹
 
-±ÈÈçËµ
+æ¯”å¦‚è¯´
 
 ```SQL
 score double(4, 1)
 ```
 
-±íÊ¾³¤¶ÈÎª4£¬Ð¡ÊýºóÎ»ÊýÎª1
+è¡¨ç¤ºé•¿åº¦ä¸º4ï¼Œå°æ•°åŽä½æ•°ä¸º1
 
-ÈÕÆÚÀàÐÍ£ºDATE£¬TIME£¬YEAR£¬DATETIME
+æ—¥æœŸç±»åž‹ï¼šDATEï¼ŒTIMEï¼ŒYEARï¼ŒDATETIME
 
-Ò»¸öÀý×Ó£º
+ä¸€ä¸ªä¾‹å­ï¼š
 
 ```sql
 create table exp(
     id int,
     worknumber varchar(10),
     name varchar(10) comment 'name',
-    gender char(1) comment 'ÐÔ±ð',
-    age tinyint unsigned comment 'ÄêÁä',
-    idcard char(18) comment 'Éí·ÝÖ¤ºÅ',
-    entrydate date comment 'ÈëÖ°Ê±¼ä'
+    gender char(1) comment 'æ€§åˆ«',
+    age tinyint unsigned comment 'å¹´é¾„',
+    idcard char(18) comment 'èº«ä»½è¯å·',
+    entrydate date comment 'å…¥èŒæ—¶é—´'
 ) comment 'information for worker';
 
 ```
 
-Ò»°ã¶¨³¤µÄchar£¬±ä³¤µÄvarchar
+ä¸€èˆ¬å®šé•¿çš„charï¼Œå˜é•¿çš„varchar
 
-#### DDL-±í²Ù×÷-ÐÞ¸Ä
+#### DDL-è¡¨æ“ä½œ-ä¿®æ”¹
 
-Ìí¼Ó×Ö¶Î
+æ·»åŠ å­—æ®µ
 
 ```sql
-ALTER TABLE ±íÃû ADD ×Ö¶ÎÃû ÀàÐÍ£¨³¤¶È£©[comment ...]
+ALTER TABLE è¡¨å ADD å­—æ®µå ç±»åž‹ï¼ˆé•¿åº¦ï¼‰[comment ...]
 
 ```
 
-ÐÞ¸ÄÊý¾ÝÀàÐÍ£º
+ä¿®æ”¹æ•°æ®ç±»åž‹ï¼š
 
 ```sql
-alter table ±íÃû modify ×Ö¶ÎÃû ÐÂÊý¾ÝÀàÐÍ£¨³¤¶È£©;
+alter table è¡¨å modify å­—æ®µå æ–°æ•°æ®ç±»åž‹ï¼ˆé•¿åº¦ï¼‰;
 ```
 
-ÐÞ¸Ä×Ö¶ÎÃûºÍ×Ö¶ÎÀàÐÍ£º
+ä¿®æ”¹å­—æ®µåå’Œå­—æ®µç±»åž‹ï¼š
 
 ```sql
-alter table ±íÃû change ¾É×Ö¶ÎÃû ÐÂ×Ö¶ÎÃû ÀàÐÍ£¨³¤¶È£©[comment ×¢ÊÍ][Ô¼Êø];
+alter table è¡¨å change æ—§å­—æ®µå æ–°å­—æ®µå ç±»åž‹ï¼ˆé•¿åº¦ï¼‰[comment æ³¨é‡Š][çº¦æŸ];
 ```
 
-É¾³ý×Ö¶Î
+åˆ é™¤å­—æ®µ
 
 ```sql
-alter table ±íÃû drop ×Ö¶ÎÃû;
+alter table è¡¨å drop å­—æ®µå;
 ```
 
-ÐÞ¸Ä±íÃû
+ä¿®æ”¹è¡¨å
 
 ```sql
-alter table ±íÃû rename to ÐÂ±íÃû;
+alter table è¡¨å rename to æ–°è¡¨å;
 ```
 
-É¾³ý±í
+åˆ é™¤è¡¨
 
 ```sql
-drop table [if exists] ±íÃû;
+drop table [if exists] è¡¨å;
 ```
 
-É¾³ýÖ¸¶¨±í£¬²¢ÇÒÖØÐÂ´´½¨¸Ã±í
+åˆ é™¤æŒ‡å®šè¡¨ï¼Œå¹¶ä¸”é‡æ–°åˆ›å»ºè¯¥è¡¨
 
 ```sql
-truncate table ±íÃû;
+truncate table è¡¨å;
 ```
 
 ### $DML$
 
-ÓÃÀ´¶ÔÊý¾Ý¿âÖÐ±íµÄÊý¾Ý¼ÇÂ¼½øÐÐÔöÉ¾¸Ä²Ù×÷
+ç”¨æ¥å¯¹æ•°æ®åº“ä¸­è¡¨çš„æ•°æ®è®°å½•è¿›è¡Œå¢žåˆ æ”¹æ“ä½œ
 
-Ìí¼Ó£º$Insert$
-ÐÞ¸Ä£º$Update$
-É¾³ý£º$Delete$
+æ·»åŠ ï¼š$Insert$
+ä¿®æ”¹ï¼š$Update$
+åˆ é™¤ï¼š$Delete$
 
-#### $DML$-Ìí¼ÓÊý¾Ý
+#### $DML$-æ·»åŠ æ•°æ®
 
-¸øÖ¸¶¨×Ö¶ÎÌí¼ÓÊý¾Ý£º
-
-```sql
-Insert Into ±íÃû£¨×Ö¶ÎÃû1£¬×Ö¶ÎÃû2£©Values£¨Öµ1£¬Öµ2£¬¡­¡­£©;
-```
-
-¸øÈ«²¿×Ö¶ÎÌí¼ÓÊý¾Ý£º
+ç»™æŒ‡å®šå­—æ®µæ·»åŠ æ•°æ®ï¼š
 
 ```sql
-Insert Into ±íÃû Values £¨Öµ1£¬ Öµ2£¬ ¡­¡­£©;
+Insert Into è¡¨åï¼ˆå­—æ®µå1ï¼Œå­—æ®µå2ï¼‰Valuesï¼ˆå€¼1ï¼Œå€¼2ï¼Œâ€¦â€¦ï¼‰;
 ```
 
-ÅúÁ¿Ìí¼ÓÊý¾Ý£º
+ç»™å…¨éƒ¨å­—æ®µæ·»åŠ æ•°æ®ï¼š
 
 ```sql
-// Õâ¸öÆäÊµ¾ÍÊÇºóÃæ¶à¼Ó¼¸¸öÊý¾Ý´®
+Insert Into è¡¨å Values ï¼ˆå€¼1ï¼Œ å€¼2ï¼Œ â€¦â€¦ï¼‰;
 ```
 
-#### $DML$-ÐÞ¸ÄÊý¾Ý
+æ‰¹é‡æ·»åŠ æ•°æ®ï¼š
 
 ```sql
-update ±íÃû set ×Ö¶ÎÃû1 = Öµ1£¬×Ö¶ÎÃû2 = Öµ2£¬ ¡­¡­[WHERE Ìõ¼þ];
+// è¿™ä¸ªå…¶å®žå°±æ˜¯åŽé¢å¤šåŠ å‡ ä¸ªæ•°æ®ä¸²
 ```
 
-#### $DML$-É¾³ýÊý¾Ý
+#### $DML$-ä¿®æ”¹æ•°æ®
 
 ```sql
-Delete From ±íÃû [Where Ìõ¼þ]
+update è¡¨å set å­—æ®µå1 = å€¼1ï¼Œå­—æ®µå2 = å€¼2ï¼Œ â€¦â€¦[WHERE æ¡ä»¶];
 ```
 
-Èç¹û²»¼Ó$where$Ìõ¼þ£¬¾Í»á°ÑËùÓÐµÄ¶«Î÷¶¼É¾µô¡£
+#### $DML$-åˆ é™¤æ•°æ®
+
+```sql
+Delete From è¡¨å [Where æ¡ä»¶]
+```
+
+å¦‚æžœä¸åŠ $where$æ¡ä»¶ï¼Œå°±ä¼šæŠŠæ‰€æœ‰çš„ä¸œè¥¿éƒ½åˆ æŽ‰ã€‚
 
 ### $DQL$
 
-$DQL$ÊÇ$Data$ $Query$ $Language$
+$DQL$æ˜¯$Data$ $Query$ $Language$
 
-ÕâÊÇ±»**¹ã·ºÊ¹ÓÃ**µÄÒ»ÀàÓï¾ä
+è¿™æ˜¯è¢«**å¹¿æ³›ä½¿ç”¨**çš„ä¸€ç±»è¯­å¥
 
 ```sql
 Select
-    ×Ö¶ÎÁÐ±í
+    å­—æ®µåˆ—è¡¨
 From
-    ±íÃûÁÐ±í
+    è¡¨ååˆ—è¡¨
 Where
-    Ìõ¼þÁÐ±í
+    æ¡ä»¶åˆ—è¡¨
 Group By
-    ·Ö×é×Ö¶ÎÁÐ±í
+    åˆ†ç»„å­—æ®µåˆ—è¡¨
 Having
-    ·Ö×éºóÌõ¼þÁÐ±í
+    åˆ†ç»„åŽæ¡ä»¶åˆ—è¡¨
 Order By
-    ÅÅÐò×Ö¶ÎÁÐ±í
+    æŽ’åºå­—æ®µåˆ—è¡¨
 Limit
-    ·ÖÒ³²ÎÊý
+    åˆ†é¡µå‚æ•°
 ```
 
-#### $DQL$-»ù±¾²éÑ¯
+#### $DQL$-åŸºæœ¬æŸ¥è¯¢
 
-²éÑ¯¶à¸ö×Ö¶Î£º
+æŸ¥è¯¢å¤šä¸ªå­—æ®µï¼š
 
 ```sql
-Select ×Ö¶Î1£¬×Ö¶Î2£¬×Ö¶Î3¡­¡­ From ±íÃû;
-Select * From ±íÃû; // All ×Ö¶Î
+Select å­—æ®µ1ï¼Œå­—æ®µ2ï¼Œå­—æ®µ3â€¦â€¦ From è¡¨å;
+Select * From è¡¨å; // All å­—æ®µ
 ```
 
-ÉèÖÃ±ðÃû£º
+è®¾ç½®åˆ«åï¼š
 
 ```sql
-Select ×Ö¶Î1 As ±ðÃû1£¬×Ö¶Î2 As ±ðÃû2 From ±íÃû;
+Select å­—æ®µ1 As åˆ«å1ï¼Œå­—æ®µ2 As åˆ«å2 From è¡¨å;
 ```
 
-È¥³ýÖØ¸´¼ÇÂ¼£º
+åŽ»é™¤é‡å¤è®°å½•ï¼š
 
 ```sql
-Select Distinct ×Ö¶ÎÁÐ±í From ±íÃû;
+Select Distinct å­—æ®µåˆ—è¡¨ From è¡¨å;
 ```
 
-#### $DQL$-Ìõ¼þ²éÑ¯
+#### $DQL$-æ¡ä»¶æŸ¥è¯¢
 
-Óï·¨£º
+è¯­æ³•ï¼š
 
 ```sql
-Select ×Ö¶ÎÁÐ±í From ±íÃû Where Ìõ¼þÁÐ±í;
+Select å­—æ®µåˆ—è¡¨ From è¡¨å Where æ¡ä»¶åˆ—è¡¨;
 ```
 
-ÌØ±ð×¢Òâ£º**$MySQL$Óï¾äÖÐÊ¹ÓÃÈýÖµ²éÑ¯£ºTRUE, FALSE, UNKNOWN**
+ç‰¹åˆ«æ³¨æ„ï¼š**$MySQL$è¯­å¥ä¸­ä½¿ç”¨ä¸‰å€¼æŸ¥è¯¢ï¼šTRUE, FALSE, UNKNOWN**
 
-×¢ÒâÄÇ¸öÄ£ºýÆ¥ÅäµÄÓï·¨¸ñÊ½£¬±ÈÈçÏÂÃæÕâ¸öÀý×Ó£º
+æ³¨æ„é‚£ä¸ªæ¨¡ç³ŠåŒ¹é…çš„è¯­æ³•æ ¼å¼ï¼Œæ¯”å¦‚ä¸‹é¢è¿™ä¸ªä¾‹å­ï¼š
 
 ```sql
 select * from emp where name like '___';
 ```
 
-$m$¸öÏÂ»®ÏßËµÃ÷ÁË×Ö³¤ÊÇ$m$
+$m$ä¸ªä¸‹åˆ’çº¿è¯´æ˜Žäº†å­—é•¿æ˜¯$m$
 
 ```sql
 select * from emp where idcard like '%1';
 ```
 
-$\%$ËµÃ÷Ç°Ãæ¶àÉÙÎ»¶¼ÎÞËùÎ½£¬×îºóÒ»¸öµÃÊÇ1
+$\%$è¯´æ˜Žå‰é¢å¤šå°‘ä½éƒ½æ— æ‰€è°“ï¼Œæœ€åŽä¸€ä¸ªå¾—æ˜¯1
 
-#### $DQL$-¾ÛºÏº¯Êý
+#### $DQL$-èšåˆå‡½æ•°
 
-½«Ò»ÁÐÊý¾Ý×÷ÎªÒ»¸öÕûÌå£¬½øÐÐ×ÝÏò¼ÆËã¡£
+å°†ä¸€åˆ—æ•°æ®ä½œä¸ºä¸€ä¸ªæ•´ä½“ï¼Œè¿›è¡Œçºµå‘è®¡ç®—ã€‚
 
-³£¼û¾ÛºÏº¯Êý£º$max$, $min$, $avg$, $sum$, $count$.
-
-```sql
-select º¯ÊýÃû from ±íÃû;
-```
-
-$null$Öµ**²»²ÎÓë**¾ÛºÏº¯Êý¼ÆËã
-
-#### $DQL$-·Ö×é²éÑ¯
+å¸¸è§èšåˆå‡½æ•°ï¼š$max$, $min$, $avg$, $sum$, $count$.
 
 ```sql
-select ×Ö¶ÎÁÐ±í From ±íÃû [Where Ìõ¼þ] Group By ·Ö×é×Ö¶ÎÃû [Having ·Ö×éºó¹ýÂËÌõ¼þ];
+select å‡½æ•°å from è¡¨å;
 ```
 
-##### $where$ºÍ$Having$Çø±ð
+$null$å€¼**ä¸å‚ä¸Ž**èšåˆå‡½æ•°è®¡ç®—
 
-1. Ö´ÐÐÊ±»ú²»Í¬£ºWhereÊÇ·Ö×éÇ°½øÐÐ¹ýÁË£¬²»Âú×ãWhereÌõ¼þ£¬²»²ÎÓë·Ö×é£»¶øHavingÊÇ·Ö×éÖ®ºó¶Ô½á¹û½øÐÐ¹ýÂË£»
-2. ÅÐ¶ÏÌõ¼þ²»Í¬£ºWhere²»ÄÜ¶Ô¾ÛºÏº¯Êý½øÐÐÅÐ¶Ï£¬¶øHaving¿ÉÒÔ¡£
+#### $DQL$-åˆ†ç»„æŸ¥è¯¢
 
-×¢Òâ£º
+```sql
+select å­—æ®µåˆ—è¡¨ From è¡¨å [Where æ¡ä»¶] Group By åˆ†ç»„å­—æ®µå [Having åˆ†ç»„åŽè¿‡æ»¤æ¡ä»¶];
+```
 
-a. Ö´ÐÐË³Ðò£ºwhere > ¾ÛºÏº¯Êý > having
-b. ·Ö×éÖ®ºó£¬²éÑ¯µÄ×Ö¶ÎÒ»°ãÎª¾ÛºÏº¯ÊýºÍ·Ö×é×Ö¶Î£¬²éÑ¯ÆäËû×Ö¶ÎÃ»ÓÐÒâÒå¡£
+##### $where$å’Œ$Having$åŒºåˆ«
 
-#### $DQL$-ÅÅÐò²éÑ¯
+1. æ‰§è¡Œæ—¶æœºä¸åŒï¼šWhereæ˜¯åˆ†ç»„å‰è¿›è¡Œè¿‡äº†ï¼Œä¸æ»¡è¶³Whereæ¡ä»¶ï¼Œä¸å‚ä¸Žåˆ†ç»„ï¼›è€ŒHavingæ˜¯åˆ†ç»„ä¹‹åŽå¯¹ç»“æžœè¿›è¡Œè¿‡æ»¤ï¼›
+2. åˆ¤æ–­æ¡ä»¶ä¸åŒï¼šWhereä¸èƒ½å¯¹èšåˆå‡½æ•°è¿›è¡Œåˆ¤æ–­ï¼Œè€ŒHavingå¯ä»¥ã€‚
+
+æ³¨æ„ï¼š
+
+a. æ‰§è¡Œé¡ºåºï¼šwhere > èšåˆå‡½æ•° > having
+b. åˆ†ç»„ä¹‹åŽï¼ŒæŸ¥è¯¢çš„å­—æ®µä¸€èˆ¬ä¸ºèšåˆå‡½æ•°å’Œåˆ†ç»„å­—æ®µï¼ŒæŸ¥è¯¢å…¶ä»–å­—æ®µæ²¡æœ‰æ„ä¹‰ã€‚
+
+#### $DQL$-æŽ’åºæŸ¥è¯¢
 
 $ORDER$ $BY$
 
 ```sql
-select ×Ö¶ÎÁÐ±í from ±íÃû order by ×Ö¶Î1 ÅÅÐò·½Ê½1£¬×Ö¶Î2, ÅÅÐò·½Ê½2;
+select å­—æ®µåˆ—è¡¨ from è¡¨å order by å­—æ®µ1 æŽ’åºæ–¹å¼1ï¼Œå­—æ®µ2, æŽ’åºæ–¹å¼2;
 ```
 
-ÅÅÐò·½Ê½£º
-ASC£ºÉýÐò
-DESC£º½µÐò
+æŽ’åºæ–¹å¼ï¼š
+ASCï¼šå‡åº
+DESCï¼šé™åº
 
-#### $DQL$-·ÖÒ³²éÑ¯
+#### $DQL$-åˆ†é¡µæŸ¥è¯¢
 
 $LIMIT$
 
-Õâ¸ö¾ÍÊÇÅª³öÀ´ÄÇÖÖÒ»Ò³Ò»Ò³µÄ¹ö¶¯Ò³Ãæ
+è¿™ä¸ªå°±æ˜¯å¼„å‡ºæ¥é‚£ç§ä¸€é¡µä¸€é¡µçš„æ»šåŠ¨é¡µé¢
 
 ```sql
-select ×Ö¶ÎÁÐ±í from ±íÃû limit ÆðÊ¼Ë÷Òý, ²éÑ¯¼ÇÂ¼Êý;
+select å­—æ®µåˆ—è¡¨ from è¡¨å limit èµ·å§‹ç´¢å¼•, æŸ¥è¯¢è®°å½•æ•°;
 ```
 
-×¢Òâµã£º
+æ³¨æ„ç‚¹ï¼š
 
-1. ÆðÊ¼Ë÷Òý´Ó0¿ªÊ¼£¬$$ÆðÊ¼Ë÷Òý = (²éÑ¯Ò³Âë - 1) \times Ã¿Ò³ÏÔÊ¾¼ÇÂ¼Êý$$
-2. ·ÖÒ³²éÑ¯ÊÇÊý¾Ý¿âµÄ**·½ÑÔ**£¬²»Í¬Êý¾Ý¿âÊµÏÖ·½Ê½²»Í¬£¬ÔÚ$MySQL$ÖÐÊÇ$LIMIT$
-3. Èç¹û²éÑ¯µÄÊÇµÚÒ»Ò³Êý¾Ý£¬ÆðÊ¼Ë÷Òý¿ÉÒÔºöÂÔ£¬Ö±½Ó¼òÐ´Îª$LIMIT$ $10$
+1. èµ·å§‹ç´¢å¼•ä»Ž0å¼€å§‹ï¼Œ$$èµ·å§‹ç´¢å¼• = (æŸ¥è¯¢é¡µç  - 1) \times æ¯é¡µæ˜¾ç¤ºè®°å½•æ•°$$
+2. åˆ†é¡µæŸ¥è¯¢æ˜¯æ•°æ®åº“çš„**æ–¹è¨€**ï¼Œä¸åŒæ•°æ®åº“å®žçŽ°æ–¹å¼ä¸åŒï¼Œåœ¨$MySQL$ä¸­æ˜¯$LIMIT$
+3. å¦‚æžœæŸ¥è¯¢çš„æ˜¯ç¬¬ä¸€é¡µæ•°æ®ï¼Œèµ·å§‹ç´¢å¼•å¯ä»¥å¿½ç•¥ï¼Œç›´æŽ¥ç®€å†™ä¸º$LIMIT$ $10$
 
-#### $DQL$-Ö´ÐÐË³Ðò
+#### $DQL$-æ‰§è¡Œé¡ºåº
 
-×¢ÒâÇø·Ö**±àÐ´**Ë³ÐòºÍ**Ö´ÐÐ**Ë³Ðò£¡
-Ö´ÐÐ´ÎÐò£ºfrom->where->group by->having->select->order by->limit
+æ³¨æ„åŒºåˆ†**ç¼–å†™**é¡ºåºå’Œ**æ‰§è¡Œ**é¡ºåºï¼
+æ‰§è¡Œæ¬¡åºï¼šfrom->where->group by->having->select->order by->limit
 
 ![alt text](image-1.png)
 
 ### $DCL$
 
-¼´**Êý¾Ý¿ØÖÆÓïÑÔ**£º$Data$ $Control$ $Language$
-¹ÜÀíÊý¾Ý¿âÓÃ»§¡¢¿ØÖÆÊý¾Ý¿âµÄ·ÃÎÊÈ¨ÏÞ¡£
+å³**æ•°æ®æŽ§åˆ¶è¯­è¨€**ï¼š$Data$ $Control$ $Language$
+ç®¡ç†æ•°æ®åº“ç”¨æˆ·ã€æŽ§åˆ¶æ•°æ®åº“çš„è®¿é—®æƒé™ã€‚
 
-#### $DCL$-¹ÜÀíÓÃ»§
+#### $DCL$-ç®¡ç†ç”¨æˆ·
 
-²éÑ¯ÓÃ»§£º
+æŸ¥è¯¢ç”¨æˆ·ï¼š
 
 ```sql
-USE mysql; # Õâ¸ömysqlÊÇÏµÍ³Êý¾Ý¿â
+USE mysql; # è¿™ä¸ªmysqlæ˜¯ç³»ç»Ÿæ•°æ®åº“
 Select * From user;
 ```
 
-´´½¨ÓÃ»§£º
+åˆ›å»ºç”¨æˆ·ï¼š
 
 ```sql
-create user  'ÓÃ»§Ãû'@'Ö÷»úÃû' IDENTIFIED BY 'ÃÜÂë';
+create user  'ç”¨æˆ·å'@'ä¸»æœºå' IDENTIFIED BY 'å¯†ç ';
 ```
 
-ÐÞ¸ÄÓÃ»§ÃÜÂë£º
+ä¿®æ”¹ç”¨æˆ·å¯†ç ï¼š
 
 ```sql
-alter user 'ÓÃ»§Ãû'@'Ö÷»úÃû' IDENTIFIED WITH mysql_native_password BY 'ÐÂÃÜÂë';
+alter user 'ç”¨æˆ·å'@'ä¸»æœºå' IDENTIFIED WITH mysql_native_password BY 'æ–°å¯†ç ';
 ```
 
-É¾³ýÓÃ»§£º
+åˆ é™¤ç”¨æˆ·ï¼š
 
 ```sql
-DROP USER 'ÓÃ»§Ãû'@'Ö÷»úÃû';
+DROP USER 'ç”¨æˆ·å'@'ä¸»æœºå';
 ```
 
-**Ö÷»úÃû¿ÉÒÔÓÃ$\%$Í¨Åä**
+**ä¸»æœºåå¯ä»¥ç”¨$\%$é€šé…**
 
-#### $DCL$-È¨ÏÞ¿ØÖÆ
+#### $DCL$-æƒé™æŽ§åˆ¶
 
-²éÑ¯È¨ÏÞ£º
+æŸ¥è¯¢æƒé™ï¼š
 
 ```sql
-show grants for 'ÓÃ»§Ãû'@'Ö÷»úÃû';
+show grants for 'ç”¨æˆ·å'@'ä¸»æœºå';
 ```
 
-ÊÚÓèÈ¨ÏÞ£º
+æŽˆäºˆæƒé™ï¼š
 
 ```sql
-GRANT È¨ÏÞÁÐ±í ON Êý¾Ý¿âÃû.±íÃû TO 'ÓÃ»§Ãû'@'Ö÷»úÃû';
+GRANT æƒé™åˆ—è¡¨ ON æ•°æ®åº“å.è¡¨å TO 'ç”¨æˆ·å'@'ä¸»æœºå';
 ```
 
-³·ÏúÈ¨ÏÞ£º
+æ’¤é”€æƒé™ï¼š
 
 ```sql
-REVOKE È¨ÏÞÁÐ±í ON Êý¾Ý¿âÃû.±íÃû FROM 'ÓÃ»§Ãû'@'Ö÷»úÃû';
+REVOKE æƒé™åˆ—è¡¨ ON æ•°æ®åº“å.è¡¨å FROM 'ç”¨æˆ·å'@'ä¸»æœºå';
 ```
 
-## Function/º¯Êý
+## Function/å‡½æ•°
 
-### ×Ö·û´®º¯Êý
+### å­—ç¬¦ä¸²å‡½æ•°
 
-ÄÚÖÃµÄ
+å†…ç½®çš„
 
 ```sql
-Concat(s1, s2, s3, ¡­¡­, sn) # ×Ö·û´®Æ´½Ó
-Lower(str) # È«²¿×ªÎªÐ¡Ð´
-Upper(str) # È«²¿×ªÎª´óÐ´
-LPAD(str, n, pad) # ×óÌî³ä
-RPAD(str, n, pad) # ÓÒÌî³ä
-TRIM(str) # È¥µô×Ö·û´®Í·²¿ºÍÎ²²¿µÄ¿Õ¸ñ
-SubString(str, start, len) # ·µ»Ø´Ó×Ö·û´®str´ÓstartÎ»ÖÃÆðµÄlen¸ö³¤¶ÈµÄ×Ö·û´®
+Concat(s1, s2, s3, â€¦â€¦, sn) # å­—ç¬¦ä¸²æ‹¼æŽ¥
+Lower(str) # å…¨éƒ¨è½¬ä¸ºå°å†™
+Upper(str) # å…¨éƒ¨è½¬ä¸ºå¤§å†™
+LPAD(str, n, pad) # å·¦å¡«å……
+RPAD(str, n, pad) # å³å¡«å……
+TRIM(str) # åŽ»æŽ‰å­—ç¬¦ä¸²å¤´éƒ¨å’Œå°¾éƒ¨çš„ç©ºæ ¼
+SubString(str, start, len) # è¿”å›žä»Žå­—ç¬¦ä¸²strä»Žstartä½ç½®èµ·çš„lenä¸ªé•¿åº¦çš„å­—ç¬¦ä¸²
 ```
 
-### ÊýÖµº¯Êý
+### æ•°å€¼å‡½æ•°
 
 ```sql
-ceil(x) # ÏòÉÏÈ¡Õû
-floor(x) # ÏòÏÂÈ¡Õû
+ceil(x) # å‘ä¸Šå–æ•´
+floor(x) # å‘ä¸‹å–æ•´
 mod(x, y) # return x % y
 rand() # return rand(0, 1)
 round(x, y) # return x.len(y)
 ```
 
-### ÈÕÆÚº¯Êý
+### æ—¥æœŸå‡½æ•°
 
 ```sql
 curdate() # return cur date
@@ -435,9 +435,9 @@ month(date) # ...
 select date_add(now(), INTERVAL 70 YEAR);
 ```
 
-### Á÷³Ìº¯Êý
+### æµç¨‹å‡½æ•°
 
-ÊµÏÖÌõ¼þÉ¸Ñ¡£¬Ìá¸ßÓï¾äÐ§ÂÊ
+å®žçŽ°æ¡ä»¶ç­›é€‰ï¼Œæé«˜è¯­å¥æ•ˆçŽ‡
 
 ```sql
 IF(value, t, f); 
@@ -446,151 +446,151 @@ case when [value1] then [res1] else [default] end
 case [expr] when [val1] then [res1] else [default] end
 ```
 
-## Ô¼Êø
+## çº¦æŸ
 
-### ¸ÅÊö
+### æ¦‚è¿°
 
-·Ç¿ÕÔ¼Êø£º$NOT$ $NULL$
-Î¨Ò»Ô¼Êø£º$UNIQUE$
-Ö÷¼üÔ¼Êø£º$PRIMARY$ $KEY$
-Ä¬ÈÏÔ¼Êø£º$DEFAULT$
-¼ì²éÔ¼Êø£º$CHECK$
-Íâ¼üÔ¼Êø£º$FOREIGN$ $KEY$
+éžç©ºçº¦æŸï¼š$NOT$ $NULL$
+å”¯ä¸€çº¦æŸï¼š$UNIQUE$
+ä¸»é”®çº¦æŸï¼š$PRIMARY$ $KEY$
+é»˜è®¤çº¦æŸï¼š$DEFAULT$
+æ£€æŸ¥çº¦æŸï¼š$CHECK$
+å¤–é”®çº¦æŸï¼š$FOREIGN$ $KEY$
 
-### Íâ¼üÔ¼Êø
+### å¤–é”®çº¦æŸ
 
-ÔÚÊý¾Ý¿â²ãÃæ£¬Ã»ÓÐÍâ¼üµÄ¹ØÁª£¬ÊÇÎÞ·¨±£Ö¤Êý¾ÝµÄÒ»ÖÂÐÔºÍÍêÕûÐÔµÄ¡£
+åœ¨æ•°æ®åº“å±‚é¢ï¼Œæ²¡æœ‰å¤–é”®çš„å…³è”ï¼Œæ˜¯æ— æ³•ä¿è¯æ•°æ®çš„ä¸€è‡´æ€§å’Œå®Œæ•´æ€§çš„ã€‚
 
-#### Óï·¨
+#### è¯­æ³•
 
-Óï·¨£º
+è¯­æ³•ï¼š
 
-Ìí¼ÓÍâ¼ü
+æ·»åŠ å¤–é”®
 
 ```sql
-Create Table ±íÃû(
-    ×Ö¶ÎÃû Êý¾ÝÀàÐÍ
-    [Constraint][Íâ¼üÃû³Æ] Foreign KEY(Íâ¼ü×Ö¶ÎÃû) References Ö÷±í(Ö÷±íÁÐÃû)
+Create Table è¡¨å(
+    å­—æ®µå æ•°æ®ç±»åž‹
+    [Constraint][å¤–é”®åç§°] Foreign KEY(å¤–é”®å­—æ®µå) References ä¸»è¡¨(ä¸»è¡¨åˆ—å)
 );
 
-Alter Table ±íÃû Add Constraint Íâ¼üÃû³Æ Foreign Key(Íâ¼ü×Ö¶ÎÃû) References Ö÷±í(Ö÷±íÁÐÃû);
+Alter Table è¡¨å Add Constraint å¤–é”®åç§° Foreign Key(å¤–é”®å­—æ®µå) References ä¸»è¡¨(ä¸»è¡¨åˆ—å);
 ```
 
-É¾³ý/¸üÐÂÐÐÎª
+åˆ é™¤/æ›´æ–°è¡Œä¸º
 
-Cascade£ºµ±ÔÚ¸¸±íÖÐÉ¾³ý/¸üÐÂ¶ÔÓ¦¼ÇÂ¼Ê±£¬Ê×ÏÈ¼ì²é¸Ã¼ÇÂ¼ÊÇ·ñÓÐ¶ÔÓ¦Íâ¼ü£¬Èç¹ûÓÐ£¬ÔòÒ²É¾³ý/¸üÐÂÍâ¼üÔÚ×Ó±íÖÐµÄ¼ÇÂ¼¡£
+Cascadeï¼šå½“åœ¨çˆ¶è¡¨ä¸­åˆ é™¤/æ›´æ–°å¯¹åº”è®°å½•æ—¶ï¼Œé¦–å…ˆæ£€æŸ¥è¯¥è®°å½•æ˜¯å¦æœ‰å¯¹åº”å¤–é”®ï¼Œå¦‚æžœæœ‰ï¼Œåˆ™ä¹Ÿåˆ é™¤/æ›´æ–°å¤–é”®åœ¨å­è¡¨ä¸­çš„è®°å½•ã€‚
 
 ```sql
-Alter Table ±íÃû Add Constraint Íâ¼üÃû³Æ Foreign Key (Íâ¼ü×Ö¶Î) References Ö÷±íÃû(Ö÷±í×Ö¶ÎÃû) On Update Cascade on delete Cascade;
+Alter Table è¡¨å Add Constraint å¤–é”®åç§° Foreign Key (å¤–é”®å­—æ®µ) References ä¸»è¡¨å(ä¸»è¡¨å­—æ®µå) On Update Cascade on delete Cascade;
 ```
 
-Õâ²¿·ÖÄÚÈÝÓÐµã»ìÂÒ
+è¿™éƒ¨åˆ†å†…å®¹æœ‰ç‚¹æ··ä¹±
 ![alt text](image-2.png)
 
-## ¶à±í²éÑ¯
+## å¤šè¡¨æŸ¥è¯¢
 
-### ¶à±í¹ØÏµ
+### å¤šè¡¨å…³ç³»
 
-±í½á¹¹Ö®¼äµÄÁªÏµ£ºÒ»¶Ô¶à£¨¶à¶ÔÒ»£©¡¢¶à¶Ô¶à¡¢Ò»¶ÔÒ»
+è¡¨ç»“æž„ä¹‹é—´çš„è”ç³»ï¼šä¸€å¯¹å¤šï¼ˆå¤šå¯¹ä¸€ï¼‰ã€å¤šå¯¹å¤šã€ä¸€å¯¹ä¸€
 
-### ¶à±í²éÑ¯¸ÅÊö
+### å¤šè¡¨æŸ¥è¯¢æ¦‚è¿°
 
-µÑ¿¨¶û»ý£º¼¯ºÏA, BµÄËùÓÐ×éºÏÇé¿ö
+ç¬›å¡å°”ç§¯ï¼šé›†åˆA, Bçš„æ‰€æœ‰ç»„åˆæƒ…å†µ
 
-ÔÚ¶à±í²éÑ¯Ê±£¬ÐèÒªÏû³ýÎÞÐ§µÄµÑ¿¨¶û»ý
+åœ¨å¤šè¡¨æŸ¥è¯¢æ—¶ï¼Œéœ€è¦æ¶ˆé™¤æ— æ•ˆçš„ç¬›å¡å°”ç§¯
 
-### ÄÚÁ¬½Ó
+### å†…è¿žæŽ¥
 
-ÄÚÁ¬½Ó²éÑ¯µÄÊÇ**Á½ÕÅ±í½»¼¯**µÄ²¿·Ö
+å†…è¿žæŽ¥æŸ¥è¯¢çš„æ˜¯**ä¸¤å¼ è¡¨äº¤é›†**çš„éƒ¨åˆ†
 
-ÒþÊ½ÄÚÁ¬½Ó£º
-
-```sql
-Select ×Ö¶ÎÁÐ±í From ±í1£¬±í2 Where Ìõ¼þ¡­¡­;
-```
-
-ÏÔÊ¾ÄÚÁ¬½Ó£º
+éšå¼å†…è¿žæŽ¥ï¼š
 
 ```sql
-Select ×Ö¶ÎÁÐ±í From ±í1 [Inner] Join ±í2 On Á¬½ÓÌõ¼þ¡­¡­;
+Select å­—æ®µåˆ—è¡¨ From è¡¨1ï¼Œè¡¨2 Where æ¡ä»¶â€¦â€¦;
 ```
 
-### ÍâÁ¬½Ó
-
-×óÍâÁ¬½Ó
+æ˜¾ç¤ºå†…è¿žæŽ¥ï¼š
 
 ```sql
-Select ×Ö¶ÎÁÐ±í From ±í1 LEFT [Outer] Join ±í2 On Ìõ¼þ¡­¡­;
+Select å­—æ®µåˆ—è¡¨ From è¡¨1 [Inner] Join è¡¨2 On è¿žæŽ¥æ¡ä»¶â€¦â€¦;
 ```
 
-### ×ÔÁ¬½Ó
+### å¤–è¿žæŽ¥
 
-Óï·¨½á¹¹
+å·¦å¤–è¿žæŽ¥
 
 ```sql
-Select ×Ö¶ÎÁÐ±í From ±íA ±ðÃûA Join ±íA ±ðÃûB On Ìõ¼þ¡­¡­;
+Select å­—æ®µåˆ—è¡¨ From è¡¨1 LEFT [Outer] Join è¡¨2 On æ¡ä»¶â€¦â€¦;
 ```
 
-×ÔÁ¬½Ó²éÑ¯£¬¿ÉÒÔÊÇÄÚÁ¬½Ó²éÑ¯£¬Ò²¿ÉÒÔÊÇÍâÁ¬½Ó²éÑ¯¡£
+### è‡ªè¿žæŽ¥
 
-### ÁªºÏ²éÑ¯
+è¯­æ³•ç»“æž„
+
+```sql
+Select å­—æ®µåˆ—è¡¨ From è¡¨A åˆ«åA Join è¡¨A åˆ«åB On æ¡ä»¶â€¦â€¦;
+```
+
+è‡ªè¿žæŽ¥æŸ¥è¯¢ï¼Œå¯ä»¥æ˜¯å†…è¿žæŽ¥æŸ¥è¯¢ï¼Œä¹Ÿå¯ä»¥æ˜¯å¤–è¿žæŽ¥æŸ¥è¯¢ã€‚
+
+### è”åˆæŸ¥è¯¢
 
 $union$, $union$ $all$
 
 ```sql
-Select ×Ö¶ÎÁÐ±í From ±íA¡­¡­
+Select å­—æ®µåˆ—è¡¨ From è¡¨Aâ€¦â€¦
 Union [All]
-Select ×Ö¶ÎÁÐ±í From ±íB¡­¡­
+Select å­—æ®µåˆ—è¡¨ From è¡¨Bâ€¦â€¦
 ```
 
-¶ÔÓÚ Union All£¬°ÑÈ«²¿Êý¾ÝºÏ²¢µ½Ò»¿é£¬¶øUnion»á¶ÔºÏ²¢Ö®ºóµÄÊý¾Ý½øÐÐÈ¥ÖØ¡£
-**»¹ÓÐ£¬×¢Òâ×Ö¶ÎÁÐ±íÒªÒ»ÖÂ¡£**
+å¯¹äºŽ Union Allï¼ŒæŠŠå…¨éƒ¨æ•°æ®åˆå¹¶åˆ°ä¸€å—ï¼Œè€ŒUnionä¼šå¯¹åˆå¹¶ä¹‹åŽçš„æ•°æ®è¿›è¡ŒåŽ»é‡ã€‚
+**è¿˜æœ‰ï¼Œæ³¨æ„å­—æ®µåˆ—è¡¨è¦ä¸€è‡´ã€‚**
 
-### ×Ó²éÑ¯
+### å­æŸ¥è¯¢
 
-SQLÓï¾äÖÐÇ¶Ì×SELECTÓï¾ä£¬³ÆÎª**Ç¶Ì×²éÑ¯**£¬ÓÖ³Æ**×Ó²éÑ¯**¡£
+SQLè¯­å¥ä¸­åµŒå¥—SELECTè¯­å¥ï¼Œç§°ä¸º**åµŒå¥—æŸ¥è¯¢**ï¼Œåˆç§°**å­æŸ¥è¯¢**ã€‚
 
 ```sql
 Select * From t1 where column1 = (select column1 from t2);
 ```
 
-×Ó²éÑ¯Íâ²¿Óï¾ä¿ÉÒÔÊÇInsert/Update/Delete/SelectÖÐµÄÈÎºÎÒ»¸ö¡£
+å­æŸ¥è¯¢å¤–éƒ¨è¯­å¥å¯ä»¥æ˜¯Insert/Update/Delete/Selectä¸­çš„ä»»ä½•ä¸€ä¸ªã€‚
 
-#### ±êÁ¿×Ó²éÑ¯
+#### æ ‡é‡å­æŸ¥è¯¢
 
-ÀýÈç
+ä¾‹å¦‚
 
 ```sql
-select * from emp where entrydate > (select emp.entrydate from emp where name = '½ðÓ¹');
+select * from emp where entrydate > (select emp.entrydate from emp where name = 'é‡‘åº¸');
 ```
 
-#### ÁÐ×Ó²éÑ¯
+#### åˆ—å­æŸ¥è¯¢
 
-×Ó²éÑ¯·µ»Ø½á¹ûÎªÒ»ÁÐ
+å­æŸ¥è¯¢è¿”å›žç»“æžœä¸ºä¸€åˆ—
 
 ```sql
 IN
 NOT IN
-ANY # ×Ó²éÑ¯·µ»ØÁÐ±íÖÐ£¬ÓÐÒ»¸öÂú×ã¼´¿É
-SOME # µÈ¼ÛÓÚ ANY
+ANY # å­æŸ¥è¯¢è¿”å›žåˆ—è¡¨ä¸­ï¼Œæœ‰ä¸€ä¸ªæ»¡è¶³å³å¯
+SOME # ç­‰ä»·äºŽ ANY
 ALL
 ```
 
-#### ÐÐ×Ó²éÑ¯
+#### è¡Œå­æŸ¥è¯¢
 
-ÓÉÓÚÐÐ×Ó²éÑ¯·µ»ØµÄ½á¹ûÊÇÒ»ÐÐ¶àÁÐ
+ç”±äºŽè¡Œå­æŸ¥è¯¢è¿”å›žçš„ç»“æžœæ˜¯ä¸€è¡Œå¤šåˆ—
 
-ÀýÈç£º
+ä¾‹å¦‚ï¼š
 
 ```sql
-select * from emp where (salary, managerid) = (select salary, managerid from emp where name = 'ÕÅÎÞ¼É');
+select * from emp where (salary, managerid) = (select salary, managerid from emp where name = 'å¼ æ— å¿Œ');
 ```
 
-#### ±í×Ó²éÑ¯
+#### è¡¨å­æŸ¥è¯¢
 
-×Ó²éÑ¯·µ»Ø½á¹ûÊÇ¶àÐÐ¶àÁÐ£¬ÕâÖÖ×Ó²éÑ¯³ÆÎª**±í×Ó²éÑ¯**
-²Ù×÷·û£º$IN$
+å­æŸ¥è¯¢è¿”å›žç»“æžœæ˜¯å¤šè¡Œå¤šåˆ—ï¼Œè¿™ç§å­æŸ¥è¯¢ç§°ä¸º**è¡¨å­æŸ¥è¯¢**
+æ“ä½œç¬¦ï¼š$IN$
 
-### ¶à±í²éÑ¯Ð¡½á
+### å¤šè¡¨æŸ¥è¯¢å°ç»“
 
 ![alt text](image-3.png)
