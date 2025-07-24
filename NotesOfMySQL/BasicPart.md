@@ -594,3 +594,101 @@ select * from emp where (salary, managerid) = (select salary, managerid from emp
 ### 多表查询小结
 
 ![alt text](image-3.png)
+
+## 事务
+
+**事务**是一组操作的集合，将所有的操作作为一个整体一起向系统提交或者撤销操作请求。
+
+开启事务->提交事务
+
+如果出现异常，要进行**回滚事务**
+
+### 事务操作
+
+查看/设置事务提交方式
+
+#### 方式1
+
+```sql
+Select @@autocommit;
+Set @@autocommit = 0;
+```
+
+提交事务
+
+```sql
+COMMIT;
+```
+
+回滚事务
+
+```sql
+RollBack;
+```
+
+#### 方式2
+
+开启事务：
+
+```sql
+Start Transaction;
+# 或
+BEGIN;
+```
+
+提交事务：
+
+```sql
+COMMIT;
+```
+
+回滚事务：
+
+```sql
+ROLLBACK;
+```
+
+### 事务四大特性
+
+1. 原子性 $Atomicity$
+2. 一致性 $Consistency$
+3. 隔离性 $Isolation$
+4. 持久性 $Durability$
+
+### 并发事务问题
+
+1. 脏读
+2. 不可重复读
+3. 幻读
+
+多个**并发**事务执行中出现的问题！
+
+### 事务隔离级别
+
+![alt text](image-4.png)
+
+查看事务隔离级别：
+
+```sql
+Select @@TransAction_ISOLATION;
+```
+
+设置事务隔离级别：
+
+```sql
+Set [Session|GLOBAL] TRANSACTION ISOLATION LEVEL {READ UNCOMMITTED | READ COMMITTED | REPEATABLE READ | SERIALIZABLE}
+```
+
+**脏读**正如其名，读取到了未提交的数据，也就是隔离级别在$uncommitted$
+
+所谓的**不可重复读**，指的是同样的信息前后查询不一致。
+
+隔离级别修改为**Repetable Read**，可以解决**不可重复读**问题。
+也就是说，分离的事务，对同一个数据库操作，B事务对数据库的操作不会改变A事务对数据库信息前后读取的一致性。
+
+对于**幻读**，指的是查不到这个数据，但是由于另一个事务的操作，实际上是存在这条数据的情况。
+级别**Serializable**相当于给对同一个数据库操作的多个事务执行**加锁**，一次只能一个事务操作。
+
+注意！**事务隔离级别越高，数据库越安全，但是性能越差**
+
+$$基础篇完结！$$
