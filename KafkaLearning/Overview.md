@@ -1,5 +1,9 @@
 # Overview
 
+这篇文章讲的挺不错的：<https://mp.weixin.qq.com/s/_g11mmmQse6KrkUE8x4abQ>
+
+我发现看了黑马半天的视频，还不如腾讯这篇微信公众号上的推文写得好。有些基础概念需要纠正一下，原先的理解有些偏差。
+
 ## Route
 
 1. Kafka 集群启动
@@ -38,6 +42,8 @@ Kafka 的传统定义：Kafka 是一个分布式的，基于发布/订阅模式�
 
 ### 常见的应用场景
 
+主要的目的是：**异步解耦**和**削峰填谷**
+
 **缓冲/消峰**：这个场景很常见，比如双十一、秒杀等等。控制和优化数据经过系统的速度，主要是为了这个。
 解**耦合**：这玩意允许独立的扩展或者修改两边的处理过程。Producer->MQ->Consumer
 异步通信：允许用户把一个消息放到队列里去，但是并不着急处理它，等要弄的时候再说；
@@ -52,13 +58,31 @@ Kafka 的传统定义：Kafka 是一个分布式的，基于发布/订阅模式�
 
 ### 基础架构
 
+![ ](assets/Overview/2026-03-09-16-53-44.png)
+
+几个基础的概念：
+
+- Producer：负责生产消息，并且通过一定的路由策略，把消息发送到合适的broker
+- Broker：服务实例，负责消息的持久化和中转功能
+- Consumer：消费者，负责从broker中拉取订阅的消息进行消费。几个消费者构成一个分组，消息只能被同组中的一个消费者消费
+- Zookeeper：负责broker、Consumer集群的元数据的管理（**特别有一点需要注意：producer 直接连接broker，其不在zk上存储任何数据，只是通过zk去监听broker和topic的消息**）
+
+还有几个特别重要的概念：
+
+- 主题 topic: Kafka按照topic对消息进行分类，在收发消息的时候，指定topic
+- 分区 partition: 一个topic对应多个partition，用于提升系统的吞吐。同时，多个partition分布在不同的broker上，用于存储topic的消息。为了提升系统的可靠性，partition也会进行分组。每个partition对应一个主节点Leader，多个副本Follower。分布在不同的broker上，起到容灾的作用。
+- 分段 segment: 宏观上一个partition对应一个Log，为了防止log文件过大导致搜索效率低下，每个partition分成了多个segment。每个segment对应的文件名以该段中最小的offset作为文件名。当查找offset对应的Message时，通过**二分查找**，去找到Message所在的Segment中。
+- 位置偏移量 offset: Message在日志Log中的位置，消息被分配到日志文件中时，会被指定一个特定的偏移量offset。注意到offset在分区中，是唯一的标识。Kafka通过offset来保证message在分区中的有序性，不过offset不会跨越partition。**也就是说，offset在partition内有序，在topic中不一定有序。**
+
+### 基础细节
+
 对于 producer -> TopicA -> Consumers
 
 如果producer来的数据有100T，会导致TopicA的容量不够存储。对于这种海量数据，需要分而治之！
 
 **Kafka为了方便扩展，并且提高吞吐量，一个topic分为多个partition。**（实际上是划分成为几个分区）
 
-比如一个 Kafka cluster 分成了 TopicA- Partition0～2 三个部分，然后broker0～2分别是他们的名字。
+比如一个 Kafka cluster 分成了 TopicA- Partition0～2 三个部分
 
 既然Kafka cluster被划分为了多个分区，那么消费者也对应的有分区的设计。这里提出了消费者组的概念，组内每个消费者并行消费，而且互不争抢。
 
