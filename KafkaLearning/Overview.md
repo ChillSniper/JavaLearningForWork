@@ -1,6 +1,6 @@
 # Overview
 
-这篇文章讲的挺不错的：<https://mp.weixin.qq.com/s/_g11mmmQse6KrkUE8x4abQ>
+这篇文章讲的挺不错的：[Kafka 高可靠高性能原理探究](https://mp.weixin.qq.com/s/_g11mmmQse6KrkUE8x4abQ)
 
 我发现看了黑马半天的视频，还不如腾讯这篇微信公众号上的推文写得好。有些基础概念需要纠正一下，原先的理解有些偏差。
 

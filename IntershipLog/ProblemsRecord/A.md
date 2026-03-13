@@ -76,6 +76,7 @@ PayRiskJob (每2秒执行一次)
    - 解析 userId 和 projectKey
    - 调用 delBlackLimit() 解封用户
          ↓
+         
 delBlackLimit():
    - 查询游戏服务器当前策略（记录旧策略）
    - 调用SDK将 black_limit 设置为 0
