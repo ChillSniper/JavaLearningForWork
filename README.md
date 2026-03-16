@@ -31,6 +31,7 @@ Written on 2025.07.06.
 - [SeveralValuableNotesOrBooks](./SeveralValuableNotesOrBookss)：一些高质量的技术书籍和指导手册；
 - [SkyTakeoutProjectNote](./SkyTakeoutProjectNote)：如其名，仿写美团外卖的基础项目所做的一些笔记；
 - [SSM-Spring-SpringBoot](./SSM-Spring-SpringBoot)：学习 SpringBoot 框架时，做的一些学习笔记；
+- [SystemArchitectureDesign](./SystemArchitectureDesign/)：对于系统架构设计的初步学习：DDD
 
 ## 实习进展
 
