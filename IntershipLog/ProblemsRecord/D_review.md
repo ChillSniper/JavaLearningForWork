@@ -1,6 +1,7 @@
 # 简历第四点：CRM 流失召回功能——架构优化深度梳理
 
 > 涉及代码路径（customer-service-master）：
+>
 > - `internal/service/vip_scrm/churn_job.go` — Pipeline 加锁/释放锁核心逻辑
 > - `internal/dao/dao_vip_scrm/vip_scrm_user_tag_dao.go` — GetHiddenTagUIDs 实现
 > - `internal/dao/dao_vip_scrm/vip_scrm_churn_dao.go` — WithExcludeUIDs 查询选项
@@ -13,6 +14,7 @@
 ### 1.1 背景：为什么需要分布式锁
 
 流失判定是**定时任务（每天 9:30）+ 并发 goroutine**的架构：
+
 - 多个 goroutine 同时处理不同 projectID。
 - 每个项目会分批（100 条/批）扫描待判定用户。
 - 极端情况下（重跑任务、多实例部署）同一用户可能被两个 goroutine 同时拿到并处理，造成重复流失记录或数据竞争。
@@ -26,7 +28,8 @@
 Redis Pipeline（管道）是一种**客户端批量发送命令**的技术。
 
 **普通模式**：每条命令 = 1 次网络往返（RTT）：
-```
+
+```go
 Client → [SET key1] → Server
 Client ← [OK]        ← Server
 Client → [SET key2] → Server
@@ -35,7 +38,8 @@ Client ← [OK]        ← Server
 ```
 
 **Pipeline 模式**：N 条命令打包一次性发送，只需 1 次网络往返：
-```
+
+```go
 Client → [SET key1, SET key2, SET key3, ...N条] → Server
 Client ←         [OK, OK, OK, ...N个响应]        ← Server
 ```
@@ -43,6 +47,7 @@ Client ←         [OK, OK, OK, ...N个响应]        ← Server
 **性能收益**：100 个用户加锁，从 100 次 RTT 降为 1 次 RTT，在网络延迟 1ms 的场景下节省约 100ms。
 
 **代码实现**（churn_job.go:71-93）：
+
 ```go
 pipe := db.Rdb().Pipeline()
 lockCmds := make([]*redis.BoolCmd, len(users))
@@ -64,10 +69,11 @@ pipe.Exec(ctx)  // 一次性发送所有 SetNX
 
 ### 1.3 为什么释放锁要用 Lua 脚本
 
-**问题：直接 DEL 会误删别人的锁**
+**问题：直接 DEL 会误删别人的锁**：
 
 考虑如下时序：
-```
+
+```go
 实例A 加锁 key=user:123，value=tokenA，TTL=15min
 实例A 处理耗时过长，TTL 到期，锁自动过期
 实例B 加锁 key=user:123，value=tokenB，加锁成功
@@ -78,7 +84,8 @@ pipe.Exec(ctx)  // 一次性发送所有 SetNX
 **解决方案**：释放锁时必须先校验 value 是否是自己的 token，"检查 + 删除"必须是**原子操作**。
 
 **为什么需要原子性**：
-```
+
+```go
 // 非原子的伪代码（有问题）：
 if GET(key) == myToken {   // 检查
     // 在这个空隙，锁可能过期，被别人重新加上
@@ -98,6 +105,7 @@ end
 ```
 
 执行时：
+
 ```go
 // churn_job.go:102
 delPipe.Eval(ctx, churnUserUnlockLua,
@@ -112,17 +120,18 @@ delPipe.Eval(ctx, churnUserUnlockLua,
 
 ### 1.4 Lua 脚本在 Redis 中的底层原理
 
-| 特性 | 原理 |
-|------|------|
-| **原子性** | Redis 是单线程事件循环，执行 Lua 脚本期间不处理其他命令，脚本整体作为一个不可分割的操作执行 |
-| **执行引擎** | Redis 内嵌了 LuaJIT（或 Lua 5.1），通过 `luaL_newstate()` 初始化 Lua 环境 |
-| **redis.call()** | Lua 调用此函数时，会直接调用 Redis 内部命令处理函数，就像本地函数调用，无网络开销 |
-| **KEYS / ARGV** | 参数通过 Lua 全局变量传入，KEYS 是键列表，ARGV 是参数列表。Redis Cluster 模式下要求所有 KEYS 在同一 slot |
-| **脚本缓存** | EVAL 每次发送脚本体；EVALSHA 发送脚本 SHA1，Redis 从缓存中取脚本执行，节省带宽 |
-| **无副作用约束** | Lua 脚本不能执行耗时操作（sleep、I/O），否则会阻塞整个 Redis 实例 |
-| **vs MULTI/EXEC** | MULTI/EXEC 事务不能根据中间结果做条件判断（WATCH 除外）；Lua 可以写 if/else，逻辑更灵活 |
+| 特性              | 原理                                                                                                     |
+| ----------------- | -------------------------------------------------------------------------------------------------------- |
+| **原子性**        | Redis 是单线程事件循环，执行 Lua 脚本期间不处理其他命令，脚本整体作为一个不可分割的操作执行              |
+| **执行引擎**      | Redis 内嵌了 LuaJIT（或 Lua 5.1），通过 `luaL_newstate()` 初始化 Lua 环境                                |
+| **redis.call()**  | Lua 调用此函数时，会直接调用 Redis 内部命令处理函数，就像本地函数调用，无网络开销                        |
+| **KEYS / ARGV**   | 参数通过 Lua 全局变量传入，KEYS 是键列表，ARGV 是参数列表。Redis Cluster 模式下要求所有 KEYS 在同一 slot |
+| **脚本缓存**      | EVAL 每次发送脚本体；EVALSHA 发送脚本 SHA1，Redis 从缓存中取脚本执行，节省带宽                           |
+| **无副作用约束**  | Lua 脚本不能执行耗时操作（sleep、I/O），否则会阻塞整个 Redis 实例                                        |
+| **vs MULTI/EXEC** | MULTI/EXEC 事务不能根据中间结果做条件判断（WATCH 除外）；Lua 可以写 if/else，逻辑更灵活                  |
 
 **与 MULTI/EXEC 的本质区别**：
+
 - MULTI/EXEC：乐观锁，提交时发现 WATCH 的键被修改则整个事务回滚
 - Lua 脚本：悲观执行，整个脚本运行期间 Redis 不响应其他命令，适合"读-判断-写"三步必须原子的场景
 
@@ -137,6 +146,7 @@ delPipe.Eval(ctx, churnUserUnlockLua,
 **问题**：只有一种过滤维度，无法扩展（比如：高价值用户不在流失列表展示、异常账号过滤等）。
 
 **新设计**：抽象出通用的"标签系统"：
+
 - `vip_scrm_tag_types` 表：定义标签类型，每种标签有 `is_hidden`（是否从流失列表隐藏）、`count_in_churn_rate`（是否计入流失率）等属性
 - `vip_scrm_user_tags` 表：记录每个用户被打了哪些标签
 - 只要给用户打上 `is_hidden=true` 类型的标签，该用户就会自动从流失列表消失
@@ -164,6 +174,7 @@ func (d *userTagDao) GetHiddenTagUIDs(ctx context.Context,
 ```
 
 等价 SQL：
+
 ```sql
 SELECT DISTINCT vut.uid
 FROM vip_scrm_user_tags vut
@@ -194,6 +205,7 @@ if len(options.ExcludeUIDs) > 0 {
 ```
 
 **函数式选项模式的优势**：
+
 - 调用方按需传入选项，不传则使用默认值，避免大量 nil 参数
 - 新增过滤维度只需加一个 `WithXxx` 函数，不改接口签名，符合开闭原则
 - 多个选项之间相互独立，可任意组合
@@ -202,7 +214,7 @@ if len(options.ExcludeUIDs) > 0 {
 
 ### 2.4 完整调用链（churn_core.go）
 
-```
+```go
 GetChurnList（查询流失列表接口）
   ├─ userTagDao.GetHiddenTagUIDs(...)     → []int64（隐藏用户的 UID 列表）
   ├─ 构建 options []QueryOption
