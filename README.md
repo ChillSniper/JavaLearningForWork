@@ -32,6 +32,7 @@ Written on 2025.07.06.
 - [SkyTakeoutProjectNote](./SkyTakeoutProjectNote)：如其名，仿写美团外卖的基础项目所做的一些笔记；
 - [SSM-Spring-SpringBoot](./SSM-Spring-SpringBoot)：学习 SpringBoot 框架时，做的一些学习笔记；
 - [SystemArchitectureDesign](./SystemArchitectureDesign/)：对于系统架构设计的初步学习：DDD
+- [ToolsUsageLearning](./ToolsUsageLearning)：一些AI工具的使用技巧
 
 ## 实习进展
 
