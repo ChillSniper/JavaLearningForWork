@@ -39,3 +39,50 @@
 已经投递 【快Star】AI应用研发工程师：<https://campus.kuaishou.cn/#/campus/my-apply>
 
 ---
+5 7.21
+
+🔥【网易游戏雷火 秋招】
+📬内推链接：
+<https://xiaozhao.leihuo.netease.com/neitui/#/?introduceId=67zaywlq4n2xun8k>
+
+已经投递 游戏研发工程师 服务端方向：<https://campus.163.com/app/personal/apply?tab=leihuo>
+
+---
+
+6 7.21
+
+🔥【网易游戏（互娱）】2027届秋招校园招聘正式启动！
+📬内推链接：<https://campus.game.163.com/?referralCode=KUzqkE>
+内推码：KUzqkE
+
+Link: <https://campus.game.163.com/app/personal/apply>
+
+---
+
+7 7.21
+
+🔥【百度 秋招】
+无限复活甲
+📬内推码：IVKG1B
+
+Link: <https://talent.baidu.com/jobs/center>
+
+---
+
+8 7.21
+
+🔥【OPPO 秋招】
+📬投递链接：<https://careers.oppo.com/university/oppo/campus/post?shareId=18121>
+内推码： X6822475
+
+Link: <https://careers.oppo.com/university/oppo/center/history>
+
+---
+
+9 7.22
+
+文远知行
+后端开发岗
+周末做笔试
+
+---
