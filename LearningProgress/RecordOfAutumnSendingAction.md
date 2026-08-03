@@ -18,6 +18,8 @@
 
 已经投递，服务端研发工程师：<https://careers.pddglobalhr.com/campus/personal-center>
 
+8.2 第二批笔试 情况：0.98 + 0.8275 + 1 + 0.025 = 2.82 / 4
+
 ---
 
 3 07.20
@@ -84,5 +86,44 @@ Link: <https://careers.oppo.com/university/oppo/center/history>
 文远知行
 后端开发岗
 周末做笔试
+
+---
+
+10 8.3
+
+京东 后端开发岗
+link：<https://campus.jd.com/#/myDeliver?type=present>
+
+---
+
+11 8.3
+
+虾皮 后端开发岗-深圳
+
+link: <https://app.mokahr.com/campus_apply/shopee/2962#/candidateHome/applications>
+
+---
+
+12 8.3
+
+哔哩哔哩 后端开发岗-上海
+
+link: <https://jobs.bilibili.com/campus/records>
+
+---
+
+13 8.3
+
+招商银行 后端开发岗-深圳
+
+link: <https://career.cmbchina.com/center/history?tab=0>
+
+---
+
+14 8.3
+
+科大讯飞 后端开发工程师 java/go
+
+link: <https://iflytek.zhiye.com/personal/deliveryRecord>
 
 ---
